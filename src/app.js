@@ -6,6 +6,8 @@ import cookieParser from "cookie-parser";
 import compression from "compression";
 import fileUpload from "express-fileupload";
 import cors from "cors";
+import createHttpError from "http-errors";
+import routes from "./routes/index.js";
 
 //create express app
 const app = express();
@@ -42,8 +44,25 @@ app.use(
   })
 );
 
+//route does not exist
+app.use((req, res, next) => {
+  next(createHttpError.NotFound("This route does not exist."));
+});
+
+//error handling
+app.use(async (err, req, res, next) => {
+  if (err instanceof createHttpError.HttpError) {
+    res.status(err.status).json({ message: err.message });
+  } else {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 app.get("/test", (req, res) => {
   res.json({ message: "test route is working" });
 });
+
+//api v1 routes
+app.use("/api/v1", routes);
 
 export default app;
