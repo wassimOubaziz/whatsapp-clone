@@ -1,0 +1,25 @@
+{
+  "name": "whatsapp-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wassimOubaziz/whatsapp-clone.git"
+  },
+  "author": "Wassim Oubaziz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wassimOubaziz/whatsapp-clone/issues"
+  },
+  "homepage": "https://github.com/wassimOubaziz/whatsapp-clone#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  }
+}
